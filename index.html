@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOMBAL — Groupe Commercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d1520;
+      --bg-navy: #121b2a;
+      --gold: #d1a14e;
+      --gold-soft: #c49b55;
+      --white: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--white);
+      min-height: 100vh;
+      min-height: 100dvh;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      padding-left: max(3rem, env(safe-area-inset-left));
+      padding-right: max(3rem, env(safe-area-inset-right));
+      padding-top: max(1.25rem, env(safe-area-inset-top));
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: linear-gradient(180deg, rgba(13, 21, 32, 0.92) 0%, rgba(13, 21, 32, 0.65) 70%, transparent 100%);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-text span {
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.95;
+      margin-top: 0.15rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-navy);
+    }
+
+    /* Texte et image séparés : plus d’image ni de flou derrière les textes */
+    .hero-layout {
+      flex: 1 1 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(240px, 1fr);
+      align-items: stretch;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: 0;
+    }
+
+    .hero-panel {
+      background: var(--bg-navy);
+      display: flex;
+      align-items: center;
+      padding: 7.5rem 2.5rem 3rem 3rem;
+      padding-left: max(3rem, env(safe-area-inset-left));
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+      background: #0a0f18;
+    }
+
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      display: block;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+    }
+
+    .hero-kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.45rem, 4vw + 0.5rem, 2.65rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-lead {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 32em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-actions .btn-primary {
+      text-align: center;
+    }
+
+    .btn-primary {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.85rem 1.5rem;
+      background: var(--gold);
+      color: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-soft);
+      border-color: var(--gold-soft);
+    }
+
+    .entities-section {
+      width: 100%;
+      scroll-margin-top: 5.5rem;
+      background: linear-gradient(180deg, rgba(10, 16, 26, 0.92) 0%, rgba(8, 12, 20, 0.98) 100%);
+      border-top: 1px solid rgba(209, 161, 78, 0.2);
+      padding: 2.5rem 2rem 2.75rem;
+      padding-bottom: max(2.75rem, env(safe-area-inset-bottom));
+    }
+
+    .entities-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .entities-kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.65rem;
+      text-align: center;
+    }
+
+    .entities-title {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .entities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .entity-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 5.5rem;
+      padding: 1.35rem 1rem;
+      text-align: center;
+      border: 1px solid rgba(209, 161, 78, 0.35);
+      border-radius: 10px;
+      background: rgba(13, 21, 32, 0.6);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .entity-card:hover {
+      border-color: var(--gold);
+      background: rgba(209, 161, 78, 0.12);
+      color: var(--white);
+    }
+
+    .entity-card:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .entity-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .entity-hint {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    @media (max-width: 1100px) {
+      .site-header {
+        padding: 1rem 1.5rem;
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+      }
+
+      .hero-panel {
+        padding: 6.5rem 1.5rem 2.5rem;
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+      }
+
+      .hero-visual {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+        min-height: 36vh;
+        max-height: 44vh;
+      }
+
+      .hero-panel {
+        padding: 1.75rem 1.25rem 2.25rem;
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
+      }
+
+      .entities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 960px) {
+      .hero-kicker {
+        letter-spacing: 0.14em;
+        font-size: 0.68rem;
+      }
+
+      .hero-lead {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        padding: 0.85rem 1rem;
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+
+      .brand-text strong {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn-primary {
+        width: 100%;
+        padding-top: 0.95rem;
+        padding-bottom: 0.95rem;
+      }
+
+      .entities-section {
+        padding: 1.75rem 1rem 2rem;
+      }
+
+      .entities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .entity-card {
+        min-height: 4.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="#" class="brand" aria-label="YOMBAL accueil">
+      <svg class="brand-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 8 L24 28 L36 8" fill="none" stroke="#d1a14e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 20 L24 32 L30 20" fill="none" stroke="#d1a14e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="brand-text">
+        <strong>YOMBAL</strong>
+        <span>Groupe Commercial</span>
+      </div>
+    </a>
+  </header>
+
+  <section class="hero" aria-label="Présentation">
+    <div class="hero-layout">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="hero-kicker">Groupe Commercial Yombal</p>
+          <h1 class="hero-title">Un groupe, quatre expertises complémentaires</h1>
+          <p class="hero-lead">
+            Le Groupe Yombal réunit quatre entités complémentaires&nbsp;: Yombal Market, Univers Diasporas, Univers Diasporas TV et Teranga Voyage. Chacune dispose de son propre site pour vous accompagner au plus près de vos besoins.
+          </p>
+          <div class="hero-actions">
+            <a href="#nos-entites" class="btn-primary">Découvrir nos entités</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Photo d’architecture seule : l’ancien hero.png était une capture d’écran du site (texte + menu en double). -->
+        <img src="images/hero-building.jpg" alt="Immeuble de bureaux moderne" width="1600" height="1067" decoding="async">
+      </div>
+    </div>
+
+    <!-- Remplacez chaque href par l’URL définitive du site de l’entité (même onglet : retirez target="_blank"). -->
+    <div class="entities-section" id="nos-entites">
+      <div class="entities-inner">
+        <p class="entities-kicker">Le groupe</p>
+        <h2 class="entities-title">Nos entités</h2>
+        <div class="entities-grid">
+          <a class="entity-card" href="https://www.yombal-market.fr" target="_blank" rel="noopener noreferrer">
+            <span class="entity-name">Yombal Market</span>
+            <span class="entity-hint">Visiter le site</span>
+          </a>
+          <a class="entity-card" href="https://www.univers-diasporas.fr" target="_blank" rel="noopener noreferrer">
+            <span class="entity-name">Univers Diasporas</span>
+            <span class="entity-hint">Visiter le site</span>
+          </a>
+          <a class="entity-card" href="https://www.univers-diasporas-tv.fr" target="_blank" rel="noopener noreferrer">
+            <span class="entity-name">Univers Diasporas TV</span>
+            <span class="entity-hint">Visiter le site</span>
+          </a>
+          <a class="entity-card" href="https://www.teranga-voyage.fr" target="_blank" rel="noopener noreferrer">
+            <span class="entity-name">Teranga Voyage</span>
+            <span class="entity-hint">Visiter le site</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
